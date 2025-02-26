@@ -582,6 +582,7 @@ app.get('/addField', (req, res) => {
 //2AuthO
 //Implemented for educational purposes
 //NOT IN USE
+/*
 app.get('/login', (req, res) =>{
 
     const stateParam = nanoid();
@@ -655,5 +656,5 @@ app.get('/getToken', (req, res) =>{
     })
     .catch((err) => res.status(500).json({ err: err.message }));
 });
-
+*/
 app.listen(port, () => console.log(`Server is running on port ${port}`));
