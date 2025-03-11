@@ -23,7 +23,8 @@ const client = new MongoClient(process.env.MONGODB_URI, {
     }
 });
 
-//update every 24 hours: setInterval(() => setDailyAnime(),1000 * 60 * 60 * 24);
+//update every 24 hours: 
+setInterval(() => setDailyAnime(),1000 * 60 * 60 * 24);
 
 
 const setDailyAnime = async () => {
