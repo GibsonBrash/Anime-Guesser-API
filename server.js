@@ -49,30 +49,26 @@ const setDailyAnime = async () => {
         const findYesturday = await client.db('Anime-Guesser').collection('AnimeList').updateOne({usedForToday: true}, updateDoc);
         
         
-
-        
         let findAnime = true;
         let buffer = [];
         while(findAnime){
             const randomNumber= crypto.randomInt(1, 4001);
+          
             if(!buffer.find((e) => e === randomNumber)){
-                const findNew = await client.db('Anime-Guesser').collection('AnimeList').findOne({rank: randomNumber});
-                if(findNew.usedForDaily !== true){
-                    const setNew = await client.db('Anime-Guesser').collection('AnimeList').updateOne({rank: findNew.rank}, {
+                const findNew = await client.db('Anime-Guesser').collection('AnimeList').findOne({popularity: randomNumber});
+                if(findNew.usedForDaily !== true){    
+                    const setNew = await client.db('Anime-Guesser').collection('AnimeList').updateOne({popularity: findNew.popularity}, {
                         $set: {
                             usedForDaily: true,
                             usedForToday: true,
                             dayNumber: currentDay.dayNumber + 1
                         },
                     });
-                    console.log("setnew ", setNew);
+                
                     findAnime = false;
                 }
             }
         }
-        
-        console.log("find yesturday, ", findYesturday);
-        //console.log("setnew ", setNew);
         
         
     }finally{
